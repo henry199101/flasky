@@ -10,6 +10,9 @@
     {% else %}
     <p>Happy to see you again!</p>
     {% endif %}
-    {{ form_field(form.name) }}<br>
-    {{ form.submit }}<br>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ form_field(form.name) }}<br>
+        {{ form.submit }}<br>
+    </form>
 {% endblock page_content %}
