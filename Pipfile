@@ -6,6 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+flask = "*"
+flask-moment = "*"
+flask-wtf = "*"
+wtforms = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-bootstrap = "*"
 
 [requires]
 python_version = "3.5"
