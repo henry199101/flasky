@@ -13,6 +13,7 @@ wtforms = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-bootstrap = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.5"
