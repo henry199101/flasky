@@ -44,7 +44,7 @@ class User(db.Model):
 
 class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[DataRequired()])
-    submit = SubmitField('Submiit')
+    submit = SubmitField('Submit')
 
 
 @app.shell_context_processor
