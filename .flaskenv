@@ -1,1 +1,1 @@
-FLASK_APP=hello
+FLASK_APP=flasky
