@@ -14,6 +14,7 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-bootstrap = "*"
 python-dotenv = "*"
+flask-mail = "*"
 
 [requires]
 python_version = "3.5"
