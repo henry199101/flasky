@@ -1,1 +1,11 @@
-login page...
+{% extends "base.html" %}
+{% from "bootstrap/wtf.html" import quick_form %}
+
+{% block page_content %}
+<div>
+    <h1>Login</h1>
+</div>
+
+{{ quick_form(form) }}
+
+{% endblock page_content %}
