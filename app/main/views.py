@@ -1,29 +1,28 @@
 from flask import render_template, session, redirect, url_for, \
-    current_app, request
+    current_app, request, flash
 from .. import db
-from ..models import User
+from ..models import User, Article
 from ..email import send_email
 from . import main
-from .forms import NameForm
+from .forms import NameForm, ArticleForm
+from flask_login import current_user
 
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    form = NameForm()
-    if request.method == 'POST' and form.validate():
-        user = User.query.filter_by(username=form.name.data).first()
-        if user is None:
-            user = User(username=form.name.data)
-            db.session.add(user)
-            db.session.commit()
-            session['known'] = False
-            if current_app.config['FLASKY_ADMIN']:
-                send_email(current_app.config['FLASKY_ADMIN'], 'New User',
-                           'mail/new_user', user=user)
-        else:
-            session['known'] = True
-        session['name'] = form.name.data
+    form = ArticleForm()
+
+    if form.validate_on_submit():
+        title = form.title.data
+        content = form.content.data
+        author = current_user._get_current_object()
+
+        article = Article(title=title, content=content, author=author)
+        db.session.add(article)
+        db.session.commit()
+
+        flash('Post Successfully !')
+
         return redirect(url_for('main.index'))
-    return render_template('index.html',
-                           form=form, name=session.get('name'),
-                           known=session.get('known', False))
+
+    return render_template('index.html', form=form)
