@@ -1,9 +1,9 @@
-import unittest
+from tests.base import BasicTestCase
 from app import create_app, db
 from app.models import User
 
 
-class UserModelTestCase(unittest.TestCase):
+class UserModelTestCase(BasicTestCase):
     def setUp(self):
         self.app = create_app('testing')
         self.app_context = self.app.app_context()
