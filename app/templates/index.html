@@ -13,4 +13,9 @@
 
     {{ quick_form(form) }}
 
+    {% for article in articles %}
+        {{ article.title }}
+        {{ article.content }}
+    {% endfor %}
+
 {% endblock page_content %}
