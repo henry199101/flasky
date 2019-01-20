@@ -25,4 +25,5 @@ def index():
 
         return redirect(url_for('main.index'))
 
-    return render_template('index.html', form=form)
+    articles = Article.query.order_by(Article.time_stamp.desc()).all()
+    return render_template('index.html', form=form, articles=articles)
