@@ -1,18 +1,16 @@
 {% extends "base.html" %}
-{% from "_macros.html" import form_field %}
+{% from "bootstrap/wtf.html" import quick_form %}
 
 {% block title %}Flasky{% endblock %}
 
 {% block page_content %}
-    <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}</h1>
-    {% if not known %}
-    <p>Pleased to meet you!</p>
+    Hello,
+    {% if current_user.is_authenticated %}
+        {{ current_user.username }}
     {% else %}
-    <p>Happy to see you again!</p>
+        stranger
     {% endif %}
-    <form method="post">
-        {{ form.csrf_token }}
-        {{ form_field(form.name) }}<br>
-        {{ form.submit }}<br>
-    </form>
+
+    {{ quick_form(form) }}
+
 {% endblock page_content %}
